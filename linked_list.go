@@ -12,6 +12,7 @@ func PrintList(node *Node) {
 		fmt.Printf("%d ", node.Data)
 		node = node.Next
 	}
+	fmt.Println()
 }
 
 func Push(data int, head **Node) {
@@ -39,4 +40,31 @@ func Append(head **Node, data int) {
 	}
 
 	node.Next = newNode
+}
+
+func Delete(node **Node, key int) {
+
+	if node == nil { return }
+
+	// find node with given key
+	temp := *node
+	for temp != nil && temp.Data != key {
+		temp = temp.Next
+	}
+
+	// find previous node
+	prev := *node
+	for prev != nil && prev.Next.Data != key {
+		prev = prev.Next
+	}
+
+	// set prev node to next of deleted node
+	if prev != nil && temp != nil {
+		(*prev).Next = (*temp).Next
+	}
+
+	// set next deleted node to nil
+	if temp != nil {
+		(*temp).Next = nil
+	}
 }

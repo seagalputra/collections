@@ -10,4 +10,7 @@ func main() {
 	Append(&head, 1_000_000)
 
 	PrintList(head)
+
+	Delete(&head, 80)
+	PrintList(head)
 }
