@@ -2,7 +2,12 @@ package main
 
 func main() {
 	head := &Node{Data: 12}
-	Push(100, &head)
+	first := &Node{Data: 80}
+	head.Next = first
 
-	printList(head)
+	Push(100, &head)
+	InsertAfter(&first, 500)
+	Append(&head, 1_000_000)
+
+	PrintList(head)
 }
