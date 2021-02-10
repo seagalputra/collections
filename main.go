@@ -11,6 +11,9 @@ func main() {
 
 	PrintList(head)
 
-	Delete(&head, 80)
+	//Delete(&head, 80)
+	//PrintList(head)
+
+	DeleteAt(3, &head)
 	PrintList(head)
 }

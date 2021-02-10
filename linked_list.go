@@ -68,3 +68,32 @@ func Delete(node **Node, key int) {
 		(*temp).Next = nil
 	}
 }
+
+func DeleteAt(position int, node **Node) {
+
+	if node == nil { return }
+
+	// find node in the position
+	var currentPos int
+	temp := *node
+	for temp != nil && currentPos != position {
+		temp = temp.Next
+		currentPos++
+	}
+
+	// find node in the previous position
+	currentPos = 0
+	prev := *node
+	for prev != nil && currentPos != position - 1 {
+		prev = prev.Next
+		currentPos++
+	}
+
+	if prev != nil && temp != nil {
+		(*prev).Next = (*temp).Next
+	}
+
+	if temp != nil {
+		(*temp).Next = nil
+	}
+}
