@@ -134,3 +134,13 @@ func Search(head **Node, target int) bool {
 
 	return false
 }
+
+func Find(head *Node, target int) bool {
+	if head == nil {
+		return false
+	} else if head.Data == target {
+		return true
+	} else {
+		return Find(head.Next, target)
+	}
+}

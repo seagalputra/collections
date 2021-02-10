@@ -21,6 +21,9 @@ func main() {
 	fmt.Println(Search(&head, 500))
 	fmt.Println(Search(&head, 999))
 
+	fmt.Println("Search (recursively) :", Find(head, 500))
+	fmt.Println("Search (recursively) :", Find(head, 999))
+
 	DeleteAt(3, &head)
 	PrintList(head)
 	fmt.Println("Size of List :", Length(&head))
