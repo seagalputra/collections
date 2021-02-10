@@ -144,3 +144,29 @@ func Find(head *Node, target int) bool {
 		return Find(head.Next, target)
 	}
 }
+
+func GetNth(head **Node, n int) int {
+	var counter int
+
+	temp := *head
+	for temp != nil {
+		if counter == n {
+			return (*temp).Data
+		}
+		counter++
+
+		temp = (*temp).Next
+	}
+
+	return -1
+}
+
+func GetNthV2(head *Node, n int) int {
+	var counter int
+
+	if counter == n {
+		return head.Data
+	} else {
+		return GetNthV2(head.Next, n - 1)
+	}
+}

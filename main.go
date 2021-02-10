@@ -24,6 +24,9 @@ func main() {
 	fmt.Println("Search (recursively) :", Find(head, 500))
 	fmt.Println("Search (recursively) :", Find(head, 999))
 
+	fmt.Println("Node at index 2 :", GetNth(&head, 2))
+	fmt.Println("Node at index 2 (recursively) :", GetNthV2(head, 2))
+
 	DeleteAt(3, &head)
 	PrintList(head)
 	fmt.Println("Size of List :", Length(&head))
