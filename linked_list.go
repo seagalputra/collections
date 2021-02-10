@@ -113,3 +113,24 @@ func Length(head **Node) int {
 
 	return counter
 }
+
+func Count(head *Node) int {
+	if head == nil {
+		return 0
+	} else {
+		return 1 + Count(head.Next)
+	}
+}
+
+func Search(head **Node, target int) bool {
+	current := *head
+	for current != nil {
+		if (*current).Data == target {
+			return true
+		}
+
+		current = (*current).Next
+	}
+
+	return false
+}
