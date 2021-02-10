@@ -97,3 +97,19 @@ func DeleteAt(position int, node **Node) {
 		(*temp).Next = nil
 	}
 }
+
+func DeleteList(head **Node) {
+	*head = nil
+}
+
+func Length(head **Node) int {
+	var counter int
+
+	temp := *head
+	for temp != nil {
+		temp = temp.Next
+		counter++
+	}
+
+	return counter
+}
