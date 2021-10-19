@@ -1,13 +1,51 @@
 package main
 
 import (
+	"reflect"
 	"testing"
 )
 
 func TestAddNewElementAtLinkedList(t *testing.T) {
-	head := &Node{Data: 10} // this holds address of head node
-	list := LinkedList{Head: head}
+	got := LinkedList{}
+	want := LinkedList{
+		Head: &Node{
+			Data: 10,
+			Next: &Node{
+				Data: 11,
+				Next: &Node{
+					Data: 12,
+				},
+			},
+		},
+	}
 
-	list.Insert(18)
-	PrintList(list)
+	got.Insert(10)
+	got.Insert(11)
+	got.Insert(12)
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v, want %v", got, want)
+	}
+}
+
+func TestRemoveElementAtLinkedList(t *testing.T) {
+	got := LinkedList{}
+	want := LinkedList{
+		Head: &Node{
+			Data: 10,
+			Next: &Node{
+				Data: 12,
+			},
+		},
+	}
+
+	got.Insert(10)
+	got.Insert(11)
+	got.Insert(12)
+
+	got.DeleteByKey(11)
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v, want %v", got, want)
+	}
 }

@@ -23,7 +23,7 @@ func PrintList(list LinkedList) {
 
 // Insert value at last node in linked list
 func (l *LinkedList) Insert(data int) {
-	if l == nil {
+	if l.Head == nil {
 		l.Head = &Node{Data: data}
 		return
 	}
@@ -34,4 +34,23 @@ func (l *LinkedList) Insert(data int) {
 	}
 
 	head.Next = &Node{Data: data}
+}
+
+// DeleteByKey delete element in linked list with specified data
+func (l *LinkedList) DeleteByKey(data int) {
+
+	if l.Head.Data == data {
+		l.Head = l.Head.Next
+		return
+	}
+
+	var p *Node = l.Head
+	for p != nil {
+		if p.Next.Data == data {
+			p.Next = p.Next.Next
+			return
+		}
+
+		p = p.Next
+	}
 }
