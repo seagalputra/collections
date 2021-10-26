@@ -14,16 +14,8 @@ type Stack struct {
 }
 
 func (s *Stack) push(value int) {
-	if s.Head == nil {
-		s.Head = &StackNode{Data: value}
-		return
-	}
-
-	head := s.Head
-	for head.Next != nil {
-		head = head.Next
-	}
-	head.Next = &StackNode{Data: value}
+	node := &StackNode{Data: value, Next: s.Head}
+	s.Head = node
 }
 
 func (s *Stack) pop() error {
@@ -32,14 +24,7 @@ func (s *Stack) pop() error {
 		return ErrStackPopElement
 	}
 
-	head := s.Head
-	for head != nil {
-		if head.Next.Next == nil {
-			head.Next = nil
-			return nil
-		}
-		head = head.Next
-	}
+	s.Head = s.Head.Next
 
 	return nil
 }

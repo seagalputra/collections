@@ -28,7 +28,7 @@ func TestStack(t *testing.T) {
 		stack.push(11)
 		stack.push(12)
 
-		want := Stack{Head: &StackNode{Data: 11, Next: &StackNode{Data: 12}}}
+		want := Stack{Head: &StackNode{Data: 12, Next: &StackNode{Data: 11}}}
 
 		assertEqual(t, stack, want)
 	})
@@ -41,7 +41,7 @@ func TestStack(t *testing.T) {
 		stack.push(13)
 		stack.pop()
 
-		want := Stack{Head: &StackNode{Data: 10, Next: &StackNode{Data: 11, Next: &StackNode{Data: 12}}}}
+		want := Stack{Head: &StackNode{Data: 12, Next: &StackNode{Data: 11, Next: &StackNode{Data: 10}}}}
 
 		assertEqual(t, stack, want)
 	})
