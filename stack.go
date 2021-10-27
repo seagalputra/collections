@@ -13,12 +13,12 @@ type Stack struct {
 	Head *StackNode
 }
 
-func (s *Stack) push(value int) {
+func (s *Stack) Push(value int) {
 	node := &StackNode{Data: value, Next: s.Head}
 	s.Head = node
 }
 
-func (s *Stack) pop() error {
+func (s *Stack) Pop() error {
 
 	if s.Head == nil {
 		return ErrStackPopElement

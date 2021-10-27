@@ -16,7 +16,7 @@ func TestStack(t *testing.T) {
 
 	t.Run("should push element into top of stack", func(t *testing.T) {
 		stack := Stack{}
-		stack.push(10)
+		stack.Push(10)
 
 		want := Stack{Head: &StackNode{Data: 10}}
 
@@ -25,8 +25,8 @@ func TestStack(t *testing.T) {
 
 	t.Run("should push more element into stack", func(t *testing.T) {
 		stack := Stack{}
-		stack.push(11)
-		stack.push(12)
+		stack.Push(11)
+		stack.Push(12)
 
 		want := Stack{Head: &StackNode{Data: 12, Next: &StackNode{Data: 11}}}
 
@@ -35,11 +35,11 @@ func TestStack(t *testing.T) {
 
 	t.Run("should pop element from stack", func(t *testing.T) {
 		stack := Stack{}
-		stack.push(10)
-		stack.push(11)
-		stack.push(12)
-		stack.push(13)
-		stack.pop()
+		stack.Push(10)
+		stack.Push(11)
+		stack.Push(12)
+		stack.Push(13)
+		stack.Pop()
 
 		want := Stack{Head: &StackNode{Data: 12, Next: &StackNode{Data: 11, Next: &StackNode{Data: 10}}}}
 
@@ -48,7 +48,7 @@ func TestStack(t *testing.T) {
 
 	t.Run("should raise error when try pop element from empty stack", func(t *testing.T) {
 		stack := Stack{}
-		err := stack.pop()
+		err := stack.Pop()
 
 		assertError(t, err, ErrStackPopElement)
 	})
