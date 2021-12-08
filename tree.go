@@ -42,3 +42,18 @@ func (t *Tree) Insert(element int) {
 		p.LeftChild = node
 	}
 }
+
+func InsertRecur(root *TreeNode, element int) *TreeNode {
+	if root == nil {
+		root = &TreeNode{Data: element}
+		return root
+	}
+
+	if root.Data < element {
+		root.RightChild = InsertRecur(root.RightChild, element)
+	} else {
+		root.LeftChild = InsertRecur(root.LeftChild, element)
+	}
+
+	return root
+}

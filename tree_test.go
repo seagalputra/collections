@@ -87,3 +87,26 @@ func TestBinarySearchTree(t *testing.T) {
 		}
 	})
 }
+
+func TestBinarySearchTreeRecur(t *testing.T) {
+	t.Run("Should add element into tree", func(t *testing.T) {
+		var got *TreeNode
+		got = InsertRecur(got, 10)
+		got = InsertRecur(got, 7)
+		got = InsertRecur(got, 15)
+
+		want := &TreeNode{
+			Data: 10,
+			LeftChild: &TreeNode{
+				Data: 7,
+			},
+			RightChild: &TreeNode{
+				Data: 15,
+			},
+		}
+
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v, want %v", got, want)
+		}
+	})
+}
