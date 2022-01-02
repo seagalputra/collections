@@ -43,6 +43,18 @@ func (t *Tree) Insert(element int) {
 	}
 }
 
+func SearchTree(root *TreeNode, element int) TreeNode {
+	if root == nil || root.Data == element {
+		return *root
+	}
+
+	if element < root.Data {
+		return SearchTree(root.LeftChild, element)
+	}
+
+	return SearchTree(root.RightChild, element)
+}
+
 func InsertRecur(root *TreeNode, element int) *TreeNode {
 	if root == nil {
 		root = &TreeNode{Data: element}
