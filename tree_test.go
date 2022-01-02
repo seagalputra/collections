@@ -86,7 +86,9 @@ func TestBinarySearchTree(t *testing.T) {
 			t.Errorf("got %v, want %v", got, want)
 		}
 	})
+}
 
+func TestBinarySearchTreeSearch(t *testing.T) {
 	t.Run("should return the element node when search is found", func(t *testing.T) {
 		tree := Tree{
 			Parent: &TreeNode{
@@ -103,6 +105,37 @@ func TestBinarySearchTree(t *testing.T) {
 		got := SearchTree(tree.Parent, 15)
 
 		want := TreeNode{Data: 15}
+
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v, want %v", got, want)
+		}
+	})
+}
+
+func TestBinarySearchTreeDelete(t *testing.T) {
+	t.Run("should return the element node when search is found", func(t *testing.T) {
+		leftChild := &TreeNode{
+			Data: 7,
+		}
+
+		rightChild := &TreeNode{
+			Data: 15,
+		}
+
+		tree := Tree{
+			Parent: &TreeNode{
+				Data:       10,
+				LeftChild:  leftChild,
+				RightChild: rightChild,
+			},
+		}
+
+		got := DeleteTree(tree.Parent, 10)
+
+		want := &TreeNode{
+			Data:      15,
+			LeftChild: leftChild,
+		}
 
 		if !reflect.DeepEqual(got, want) {
 			t.Errorf("got %v, want %v", got, want)
